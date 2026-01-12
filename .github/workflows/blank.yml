@@ -221,23 +221,23 @@ jobs:
          
           # 编译
 
-          sh ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/build_server.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
+          bash ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/build_server.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
           
           
           # 编译agent
-          sh ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/build_agent.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
+          bash ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/build_agent.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
           
           # 发布
-          sh ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/publish_server.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
+          bash ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/publish_server.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
           
-          sh ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/publish_agent.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
+          bash ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/publish_agent.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
           
           
           # 部署
-          sh ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/guanlan/docker_deploy.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
+          bash ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/guanlan/docker_deploy.sh $WORK_ROOT_DIR/.JENKINS.env || CheckLastResult
           
           # 部署angent
-          sh ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/generate_deploy_agent.sh $WORK_ROOT_DIR/.JENKINS.env guanlan || CheckLastResult
+          bash ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/generate_deploy_agent.sh $WORK_ROOT_DIR/.JENKINS.env guanlan || CheckLastResult
           
           # 部署angent
           #sh ${WORK_ROOT_DIR}/myutils/schoolmgr_schedule/scripts/generate_deploy_agent.sh $WORK_ROOT_DIR/.JENKINS.env sanlong_node || CheckLastResult
