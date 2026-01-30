@@ -80,8 +80,9 @@ jobs:
       - name: Get current branch name
         id: get_branch
         run: |
-          echo "BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
-          echo "BRANCH_NAME=master" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$(echo ${{ github.event.client_payload.mybranch }} | sed 's|refs/heads/||')"  >> $GITHUB_ENV
+          # echo "BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+          # echo "BRANCH_NAME=master" >> $GITHUB_ENV
           # echo "UTILS_DIR=${PWD}/${{github.event.client_payload.project_name}}/myutils" >> $GITHUB_ENV
           echo "UTILS_DIR=/tmp/myutils" >> $GITHUB_ENV
           echo "WORK_ROOT_DIR=${PWD}/${{github.event.client_payload.project_name}}" >> $GITHUB_ENV
@@ -95,6 +96,7 @@ jobs:
 
       - name: Generate JENKINS.env
         run: |
+          cat $BRANCH
           echo "export BRANCH=$BRANCH " >> $JENKINS_ENV_PATH
           echo "export UTILS_DIR=$UTILS_DIR" >> $JENKINS_ENV_PATH
           echo "export WORK_ROOT_DIR=$WORK_ROOT_DIR" >> $JENKINS_ENV_PATH
