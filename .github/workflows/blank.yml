@@ -219,14 +219,15 @@ jobs:
       
 
 
-      # - name: deploy action
-      #   run: |
-      #     pushd .
-      #     cd ${UTILS_DIR}
-      #     source utils.sh
-      #     popd 
+      - name: deploy action
+        run: |
+          pushd .
+          cd ${UTILS_DIR}
+          source utils.sh
+          popd 
           
-      #     bash ${WORKSPACE}/myutils/schoolmgr_schedule/scripts/develop/deploy_web.sh ${JENKINS_ENV_PATH} || CheckLastResult
+          # bash ${WORKSPACE}/myutils/schoolmgr_schedule/scripts/develop/deploy_web.sh ${JENKINS_ENV_PATH} || CheckLastResult
+          bash ${WORKSPACE}/myutils/schoolmgr_schedule/scripts/guanlan/docker_deploy.sh  ${JENKINS_ENV_PATH} || CheckLastResult
 
           
       # - name: Clone ${{  github.event.client_payload.project_name }}
