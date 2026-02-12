@@ -207,6 +207,8 @@ jobs:
       
 
       - name: publish action
+        env:
+          GH_TOKEN: ${{ secrets.EXTGITHUB_TOKEN }}
         run: |
           pushd .
           cd ${UTILS_DIR}
